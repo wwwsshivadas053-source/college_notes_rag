@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyBuddy RAG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 font-sans">
+    <nav class="bg-indigo-700 text-white shadow-lg">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold flex items-center gap-2">
+                <i class="fas fa-book-open"></i> StudyBuddy
+            </a>
+            <div class="space-x-6">
+                {% if current_user.is_authenticated %}
+                    <a href="/chat_page" class="hover:text-indigo-200">Chat</a>
+                    {% if current_user.is_admin %}
+                        <a href="/admin" class="hover:text-indigo-200 text-yellow-300">Admin</a>
+                    {% endif %}
+                    <a href="/logout" class="bg-indigo-500 px-4 py-2 rounded hover:bg-indigo-600">Logout</a>
+                {% else %}
+                    <a href="/login" class="hover:text-indigo-200">Login</a>
+                    <a href="/register" class="bg-white text-indigo-700 px-4 py-2 rounded font-semibold">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto mt-8 px-6">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>My Notes</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-100">
+
+<div class="max-w-6xl mx-auto py-10">
+
+<h1 class="text-4xl font-bold mb-6">
+
+My Uploaded Notes
+
+</h1>
+
+<table
+class="w-full bg-white shadow rounded">
+
+<thead>
+
+<tr class="bg-indigo-600 text-white">
+
+<th class="p-3">
+Filename
+</th>
+
+<th>
+Uploaded
+</th>
+
+<th>
+Action
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for note in notes %}
+
+<tr class="border-b">
+
+<td class="p-3">
+
+{{ note.original_name }}
+
+</td>
+
+<td>
+
+{{ note.upload_date }}
+
+</td>
+
+<td>
+
+<a
+href="/delete-note/{{note.id}}"
+class="text-red-600">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+
+</html>

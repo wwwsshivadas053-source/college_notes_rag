@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Dashboard</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+
+<nav class="bg-indigo-600 text-white p-4 flex justify-between">
+
+<h1 class="text-2xl font-bold">
+NoteMind AI
+</h1>
+
+<a href="/logout">
+Logout
+</a>
+
+</nav>
+
+<div class="p-10">
+
+<h2 class="text-4xl font-bold">
+
+Welcome {{ current_user.username }}
+
+</h2>
+
+<p class="mt-3 text-gray-600">
+
+Manage your notes and chat with AI.
+
+</p>
+
+</div>
+<div class="bg-white p-6 rounded-xl shadow">
+
+<h3 class="text-2xl font-bold mb-4">
+Upload Notes
+</h3>
+
+<form
+action="/upload-note"
+method="POST"
+enctype="multipart/form-data">
+
+<input
+type="file"
+name="pdf"
+accept=".pdf"
+required
+class="mb-4">
+
+<button
+class="bg-indigo-600 text-white px-6 py-2 rounded">
+
+Upload PDF
+
+</button>
+
+</form>
+
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+
+<h3 class="text-xl font-bold">
+Total Notes
+</h3>
+
+<p class="text-4xl mt-3">
+
+{{ total_notes }}
+
+</p>
+
+</div>
+<div class="grid md:grid-cols-4 gap-6">
+
+Statistics Cards
+
+Upload Card
+
+Recent Notes
+
+Quick Actions
+
+</div>
+
+
+</body>
+</html>
