@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Login | College Notes RAG{% endblock %}
+{% block content %}
+<section class="mx-auto max-w-md rounded-[2rem] border border-ink/10 bg-white/70 p-8 shadow-xl">
+  <h1 class="font-display text-4xl font-bold">Login</h1>
+  <form method="post" class="mt-6 space-y-4">
+    <input name="email" type="email" class="w-full rounded-2xl border border-ink/10 px-4 py-3" placeholder="Email" required>
+    <input name="password" type="password" class="w-full rounded-2xl border border-ink/10 px-4 py-3" placeholder="Password" required>
+    <button class="w-full rounded-full bg-ink px-5 py-3 font-bold text-cream">Login</button>
+  </form>
+  <p class="mt-4 text-sm text-ink/65">Default admin: admin@example.com / admin123. Change this after first login.</p>
+</section>
+{% endblock %}

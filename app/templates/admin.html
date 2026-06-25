@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}Admin | College Notes RAG{% endblock %}
+{% block content %}
+<section class="space-y-6">
+  <div class="rounded-[2rem] bg-ink p-8 text-cream shadow-xl">
+    <h1 class="font-display text-5xl font-bold">Admin Dashboard</h1>
+    <p class="mt-3 text-cream/70">Manage users, uploaded notes, feedback, and recent chat logs.</p>
+  </div>
+
+  <div class="grid gap-6 xl:grid-cols-2">
+    <div class="rounded-3xl border border-ink/10 bg-white/70 p-5 shadow-xl">
+      <h2 class="font-display text-3xl font-bold">Users</h2>
+      <div class="mt-4 overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead><tr class="border-b border-ink/10"><th class="py-2">Name</th><th>Email</th><th>Role</th><th></th></tr></thead>
+          <tbody>
+            {% for user in users %}
+              <tr class="border-b border-ink/10">
+                <td class="py-3">{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                  <form method="post" action="{{ url_for('admin.update_user_role', user_id=user.id) }}" class="flex gap-2">
+                    <select name="role" class="rounded-xl border border-ink/10 px-2 py-1">
+                      <option value="user" {% if user.role == 'user' %}selected{% endif %}>user</option>
+                      <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>admin</option>
+                    </select>
+                    <button class="rounded-full bg-moss px-3 py-1 text-white">Save</button>
+                  </form>
+                </td>
+                <td>
+                  <form method="post" action="{{ url_for('admin.delete_user', user_id=user.id) }}" onsubmit="return confirm('Delete this user?')">
+                    <button class="rounded-full bg-red-700 px-3 py-1 text-white">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="rounded-3xl border border-ink/10 bg-white/70 p-5 shadow-xl">
+      <h2 class="font-display text-3xl font-bold">Notes</h2>
+      <div class="mt-4 overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead><tr class="border-b border-ink/10"><th class="py-2">File</th><th>Status</th><th>Chunks</th><th></th></tr></thead>
+          <tbody>
+            {% for note in notes %}
+              <tr class="border-b border-ink/10">
+                <td class="py-3">{{ note.filename }}</td>
+                <td>{{ note.status }}</td>
+                <td>{{ note.chunk_count }}</td>
+                <td>
+                  <form method="post" action="{{ url_for('admin.delete_note', note_id=note.id) }}" onsubmit="return confirm('Delete this note?')">
+                    <button class="rounded-full bg-red-700 px-3 py-1 text-white">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid gap-6 xl:grid-cols-2">
+    <div class="rounded-3xl border border-ink/10 bg-white/70 p-5 shadow-xl">
+      <h2 class="font-display text-3xl font-bold">Feedback</h2>
+      <div class="mt-4 space-y-3">
+        {% for item in feedback %}
+          <div class="rounded-2xl bg-cream p-4">
+            <div class="text-sm font-bold">Rating: {{ item.rating }}/5</div>
+            <p class="mt-1 text-sm text-ink/70">{{ item.message or "No message" }}</p>
+            <form method="post" action="{{ url_for('admin.delete_feedback', feedback_id=item.id) }}" class="mt-2">
+              <button class="rounded-full bg-red-700 px-3 py-1 text-xs text-white">Delete</button>
+            </form>
+          </div>
+        {% else %}
+          <p class="text-sm text-ink/60">No feedback yet.</p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="rounded-3xl border border-ink/10 bg-white/70 p-5 shadow-xl">
+      <h2 class="font-display text-3xl font-bold">Recent Chat Logs</h2>
+      <div class="mt-4 space-y-3">
+        {% for log in logs %}
+          <details class="rounded-2xl bg-tide p-4">
+            <summary class="cursor-pointer text-sm font-bold">{{ log.question[:100] }}</summary>
+            <p class="mt-3 whitespace-pre-wrap text-sm text-ink/75">{{ log.answer }}</p>
+          </details>
+        {% else %}
+          <p class="text-sm text-ink/60">No chat logs yet.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
