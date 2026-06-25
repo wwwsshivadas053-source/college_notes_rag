@@ -7,3 +7,4 @@ PyMuPDF>=1.24,<2
 numpy>=1.26
 scikit-learn>=1.6,<2
 google-genai>=1,<2
+faiss-cpu==1.14.3
