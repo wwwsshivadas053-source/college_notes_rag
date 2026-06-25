@@ -1,4 +1,4 @@
-# College Notes RAG Chatbot
+<img width="1347" height="631" alt="Screenshot 2026-06-25 215129" src="https://github.com/user-attachments/assets/4959afa4-d90c-4e17-b55c-ae93048d5586" /># College Notes RAG Chatbot
 
 A Flask web app where students upload PDF notes and ask questions using Retrieval-Augmented Generation. The app supports user login, admin CRUD, PDF text extraction, local vector retrieval, optional FAISS indexing, Gemini answer generation, and feedback capture.
 
@@ -145,3 +145,12 @@ PMD.md              Product/Project Management Document
 - Uploaded PDFs, SQLite database files, and vector indexes are stored under Flask's `instance/` directory.
 - The app uses `pathlib` for OS-independent file paths.
 - SQLite is the default database. Set `DATABASE_URL` to a PostgreSQL SQLAlchemy URL for production.
+
+## User interface
+<img width="1365" height="635" alt="Screenshot 2026-06-25 214806" src="https://github.com/user-attachments/assets/181ba6b6-eae2-44cc-9041-2af3575bcdc9" />
+<img width="1347" height="640" alt="Screenshot 2026-06-25 221216" src="https://github.com/user-attachments/assets/2ee1620c-307c-43a1-9e1a-0da9640dc516" />
+<img width="1366" height="633" alt="Screenshot 2026-06-25 215055" src="https://github.com/user-attachments/assets/7dfd8795-6984-47ac-9710-bbded9df7b3e" />
+<img width="1347" height="631" alt="Screenshot 2026-06-25 215129" src="https://github.com/user-attachments/assets/2695940e-bf1f-4b72-93cf-0b80c2258950" />
+<img width="1342" height="637" alt="Screenshot 2026-06-25 221142" src="https://github.com/user-attachments/assets/ed9f451c-31d4-4041-af4a-dfb8a04e3603" />
+<img width="1337" height="639" alt="Screenshot 2026-06-25 221403" src="https://github.com/user-attachments/assets/eff282c0-3ca9-4d68-9778-72fd49c20127" />
+<img width="1335" height="643" alt="Screenshot 2026-06-25 221447" src="https://github.com/user-attachments/assets/2ced98a9-0ece-459f-8045-234c5f306d7d" />
